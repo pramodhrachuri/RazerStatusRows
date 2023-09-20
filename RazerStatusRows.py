@@ -1,14 +1,17 @@
+#!/usr/bin/python3
 from openrazer.client import DeviceManager
 from openrazer.client import constants as razer_constants
 import math
 import numpy as np
-import matplotlib.pyplot as plt
 import time
 from colour import Color
 import psutil
 
+DEBUG = True
 
-# Create a DeviceManager. This is used to get specific devices
+if DEBUG:
+    import matplotlib.pyplot as plt
+
 device_manager = DeviceManager()
 
 print("Found {} Razer devices".format(len(device_manager.devices)))
@@ -33,12 +36,14 @@ color_gradiant = list([list(np.array(x.get_rgb())*255) for x in color_gradiant])
 
 batter_level = 0
 temperature  = 0
-# for x in np.linspace(0,1,100):
-while 1:
-    pass
-    batter_level = psutil.sensors_battery().percent/100
-    temperature = np.mean([x[0].current for x in np.array(list(psutil.sensors_temperatures().values())).reshape(-1)])/100
 
+charging_animation_status = 0
+
+while 1:
+    batter_level = psutil.sensors_battery().percent/100
+    temperature = np.max([x[0].current for x in np.array(list(psutil.sensors_temperatures().values())).reshape(-1)])/100
+    with open("/sys/class/power_supply/AC0/online") as f:
+        charging_status = int(f.read())
 
     row_limit = [0]*len(row_size)
     row_limit[0]  = np.clip(math.ceil(batter_level*row_size[0]),1,None)
@@ -56,12 +61,18 @@ while 1:
     rgbs_matrix[5,:] = [255,255,255]
 
     # green/red as data
-    rgbs_matrix[0,1:row_limit[0]+1] = ([0,255,0] if batter_level>0.25 else [255,0,0])
-    print((1,row_limit[0]),batter_level)
+    rgbs_matrix[0,1:row_limit[0]+1] = ([0,255,0] if batter_level>=0.69 else ([255,0,0] if batter_level<=0.30 else [0,0,255]))
+
+    if charging_status:
+        rgbs_matrix[0][charging_animation_status] = ([0,0,255] if batter_level>=0.69 else [0,255,0])
+
+        charging_animation_status += 1
+        if charging_animation_status >= cols:
+            charging_animation_status = 0
 
     # gradiant as data
     rgbs_matrix[1,:row_limit[1]+1] = color_gradiant[:row_limit[1]+1]
-    print((1,row_limit[1]),temperature)
+
 
     device.fx.advanced.matrix.reset()  
     for i in range(rows):
@@ -70,4 +81,4 @@ while 1:
 
     device.fx.advanced.draw()
 
-    time.sleep(1)
+    time.sleep(0.5)
