@@ -3,12 +3,15 @@
 ## Overview
 RGB lighting can enhance aesthetics, but why limit it to just that? Razer Blade keyboards offer individually lit RGB keys, and with OpenRazer on Linux, you can take control of each key's lighting programmatically. That's where RazerStatusRows comes in – it adds functionality to your Razer keyboard's lighting by displaying real-time status information.
 
-With RazerStatusRows, you can transform your keyboard lighting into a functional status indicator. Currently, it supports the following features:
+![Razer Keyboard with status on rows](./media/RazerStatusRows.jpg)
+
+With RazerStatusRows, you can transform your keyboard lighting into a functional status indicator like above. Currently, it supports the following features:
 
 ### Battery Status
 - The top row of your keyboard shows the remaining battery percentage.
 - Different colors are used to represent specific battery percentage intervals.
 - A charging animation displays when your laptop is connected to a charger.
+   ![Razer Keyboard with status on rows](./media/battery_animation.gif)
 
 ### Temperature Status
 - The second row of your keyboard displays the temperature.

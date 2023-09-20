@@ -77,7 +77,7 @@ def main():
 
         if charging_status:
             rgbs_matrix[0, charging_animation_status] = [0, 0, 255] if battery_level >= BATTERY_HIGH_THRESHOLD else [0, 255, 0]
-            charging_animation_status = (charging_animation_status + 1) % cols
+            charging_animation_status = (charging_animation_status + 1) % (row_limits[0]+1)
         
         
         # Set gradient for temperature
