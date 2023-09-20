@@ -37,7 +37,7 @@ Follow these simple steps to install and use RazerStatusRows:
    python RazerStatusRows.py
    ```
 
-5. **Auto-Start Configuration**: Customize auto-start options according to your preferences to have RazerStatusRows automatically run when you log in.
+5. **Auto-Start Configuration**: Customize auto-start options according to your preferences and distro to have RazerStatusRows automatically run when you log in.
 
 ## Configuration
 
