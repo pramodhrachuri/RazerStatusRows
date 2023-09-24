@@ -1,7 +1,7 @@
 # RazerStatusRows
 
 ## Overview
-RGB lighting can enhance aesthetics, but why limit it to just that? Razer Blade keyboards offer individually lit RGB keys, and with OpenRazer on Linux, you can take control of each key's lighting programmatically. That's where RazerStatusRows comes in – it adds functionality to your Razer keyboard's lighting by displaying real-time status information.
+RGB lighting can enhance aesthetics, but why limit it to just that? Razer Blade keyboards offer individually lit RGB keys, and with [OpenRazer](https://openrazer.github.io/) on Linux, you can take control of each key's lighting programmatically. That's where RazerStatusRows comes in – it adds functionality to your Razer keyboard's lighting by displaying real-time status information.
 
 ![Razer Keyboard with status on rows](./media/RazerStatusRows.jpg)
 
@@ -23,7 +23,7 @@ Stay tuned for more features and enhancements!
 
 Follow these simple steps to install and use RazerStatusRows:
 
-1. **Install OpenRazer**: Ensure you have OpenRazer installed on your Linux system.
+1. **Install OpenRazer**: Ensure you have [OpenRazer](https://openrazer.github.io/) installed on your Linux system.
 
 2. **Clone the Git Repository**: Clone this repository to your local machine.
 
@@ -37,7 +37,7 @@ Follow these simple steps to install and use RazerStatusRows:
    python RazerStatusRows.py
    ```
 
-5. **Auto-Start Configuration**: Customize auto-start options according to your preferences and distro to have RazerStatusRows automatically run when you log in.
+5. **Auto-Start Configuration**: Customize auto-start options according to your preferences and distro to have RazerStatusRows automatically run when you log in. In my case, I created a desktop file in ~/.config/autostart.
 
 ## Configuration
 
